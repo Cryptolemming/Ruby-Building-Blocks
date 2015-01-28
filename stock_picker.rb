@@ -1,15 +1,17 @@
-stock_picker = Array.new(7) { rand(100)}
+def stockPicker(stock_picker)
 
-first = stock_picker.each_with_index.min[1]
+	$stock_picker = Array.new(7) { rand(100)}
 
-sell_side = stock_picker.slice(first..-1)
+	first = $stock_picker.each_with_index.min[1]
+	sell_side = $stock_picker.slice(first..-1)
+	last = $stock_picker.index(sell_side.each_with_index.max[0])
 
-last = stock_picker.index(sell_side.each_with_index.max[0])
+	if sell_side.count == 1
+		last = "no sell possible"
+	end
 
-if sell_side.count == 1
-	last = "no sell possible"
+	result = [first, last]
+
 end
 
-result = [first, last]
-
-
+stockPicker($stock_picker)
